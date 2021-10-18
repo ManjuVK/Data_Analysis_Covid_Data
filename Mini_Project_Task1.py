@@ -5,7 +5,7 @@ import numpy as np
 
 # Read dataset
 #dataset = pd.read_csv("C:/Users/manju/OneDrive/Data Analysis For Business Intelligence/Modules/Semester_2/MA7080 Mathematical Modelling/Task 1 for miniproject/WHO-COVID-19-global-data (1).csv")
-dataset = pd.read_csv("https://github.com/ManjuVK/Data_Analysis_covid_data_MM/blob/master/WHO-COVID-19-global-data%20(1).csv")
+dataset = pd.read_csv("./WHO-COVID-19-global-data (1).csv")
 Covid_cases = dataset['Cumulative_cases']
 date = dataset['Date_reported']
 #print(Covid_cases)
@@ -46,6 +46,8 @@ x1 = np.arange(0,626)
 y1 = normalised_United_Kingdom_dataset
 y2 = normalised_Italy_dataset
 y3 = normalised_USA_dataset
+#print("******************************** Normalised USA dataset")
+#print(y3)
 plt.xticks(np.arange(0,626,15))
 plt.xlim(xmin=0)
 plt.xticks(rotation=90)
@@ -76,7 +78,7 @@ plt.show()
 
 #       ITALY
 x1 = np.arange(0,626)
-y1 = normalised_Italy_dataset
+y1 = np.log(normalised_Italy_dataset)
 plt.xticks(np.arange(0,626,15))
 plt.xlim(xmin=0)
 plt.xticks(rotation=90)
@@ -89,7 +91,9 @@ plt.show()
 
 #   UNITED STATES OF AMERICA
 x1 = np.arange(0,626)
-y1 = normalised_USA_dataset
+y1 = np.log(normalised_USA_dataset)
+print("******************USA")
+print(y1)
 plt.xticks(np.arange(0,626,15))
 plt.xlim(xmin=0)
 plt.xticks(rotation=90)
