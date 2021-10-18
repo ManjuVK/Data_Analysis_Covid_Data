@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Read dataset
-dataset = pd.read_csv("C:/Users/manju/OneDrive/Data Analysis For Business Intelligence/Modules/Semester_2/MA7080 Mathematical Modelling/Task 1 for miniproject/WHO-COVID-19-global-data (1).csv")
+#dataset = pd.read_csv("C:/Users/manju/OneDrive/Data Analysis For Business Intelligence/Modules/Semester_2/MA7080 Mathematical Modelling/Task 1 for miniproject/WHO-COVID-19-global-data (1).csv")
+dataset = pd.read_csv("https://github.com/ManjuVK/Data_Analysis_covid_data_MM/blob/master/WHO-COVID-19-global-data%20(1).csv")
 Covid_cases = dataset['Cumulative_cases']
 date = dataset['Date_reported']
 #print(Covid_cases)
