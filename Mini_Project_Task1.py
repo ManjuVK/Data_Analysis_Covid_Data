@@ -8,12 +8,12 @@ import numpy as np
 dataset = pd.read_csv("./WHO-COVID-19-global-data (1).csv")
 Covid_cases = dataset['Cumulative_cases']
 date = dataset['Date_reported']
-#print(Covid_cases)
 The_Untited_Kingdom = Covid_cases[132299:132925]
-print("*********************************** The United Kingdom *******************************************")
-print(The_Untited_Kingdom)
+The_Untited_Kingdom = The_Untited_Kingdom.dropna()
 Italy = Covid_cases[64583:65209]
+Italy = Italy.dropna()
 United_States_of_America = Covid_cases[141704:142330]
+United_States_of_America = United_States_of_America.dropna()
 
 #***********************************TASK 1-3****************************************************************
 # Plot the data
@@ -104,3 +104,9 @@ plt.plot(x1,y1,label='The Untited Kingdom', c='c')
 plt.legend()
 plt.show()
 
+#************************* SLOPE-INTERCEPT
+
+y1 = United_States_of_America
+slope_intercept = np.polyfit(x1,y1,1)
+
+print(slope_intercept)
