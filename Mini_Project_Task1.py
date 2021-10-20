@@ -100,13 +100,27 @@ plt.xticks(rotation=90)
 plt.xlabel("Days from begining of epidemic")
 plt.ylabel("Number of Covid cases ")
 plt.title("Normalised Cumulative Covid cases of United States of America from 03.01.2020 to 20.09.2021")
-plt.plot(x1,y1,label='The Untited Kingdom', c='c')
+plt.plot(x1,y1,label='United States of America', c='c')
+x1, y1 = [15, 22], [-18, -16]
+plt.plot(x1, y1, '--g')
+x1, y1 = [23, 53.9], [-16, -14.84]
+plt.plot(x1, y1, '--r')
+x1, y1 = [54.6, 102.2], [-14.73, -6.06]
+plt.plot(x1, y1, '--g')
+x1, y1 = [102.9, 298.9], [-6.09, -3.61]
+plt.plot(x1, y1, '--r')
+x1, y1 = [299, 391.8], [-3.61, -2.42]
+plt.plot(x1, y1, '--g')
+x1, y1 = [391.9, 613.1], [-2.43, -2.01]
+plt.plot(x1, y1, '--r')
+
+#plt.plot(x, y, '--g', label='y=2x+1')
 plt.legend()
 plt.show()
 
-#************************* SLOPE-INTERCEPT
-
+#************************* SLOPE-INTERCEPT**********
 y1 = United_States_of_America
+x1 = np.arange(0,626)
 slope_intercept = np.polyfit(x1,y1,1)
 
 print(slope_intercept)
