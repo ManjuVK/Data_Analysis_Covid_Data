@@ -68,25 +68,30 @@ plt.xlabel("Days from begining of epidemic")
 plt.ylabel("Number of Covid cases")
 plt.title("Normalised Cumulative Covid cases of United Kingdom from 03.01.2020 to 20.09.2021")
 plt.plot(x1,y1,label='The Untited Kingdom', c='m')
-x1, y1 = [26.0, 37.2 ], [-17.36, -15.95]
+# first wave
+x1, y1 = [26.0, 104.2 ], [-17.36, -6.33]
 plt.plot(x1, y1, '--g')
-x1, y1 = [37.3, 49.0], [-15.94, -15.74]
+x1, y1 = [104.2, 258.5], [-6.33, -5.17]
 plt.plot(x1, y1, '--r')
-x1, y1 = [49.1,96.1 ], [-15.74, -6.68]
+#second wave
+x1, y1 = [258.6,401.7 ], [-5.17, -2.82]
 plt.plot(x1, y1, '--g')
-x1, y1 = [96.1, 252.3], [-6.68, -5.23]
+x1, y1 = [401.8, 626], [-2.82, -2.24]
 plt.plot(x1, y1, '--r')
-x1, y1 = [252.4, 321.8], [-5.23, -3.75]
-plt.plot(x1, y1, '--g')
-x1, y1 = [321.9, 360.8], [-3.75, -3.30]
-plt.plot(x1, y1, '--r')
-x1, y1 = [360.9, 396.2], [-3.30, -2.77]
-plt.plot(x1, y1, '--g')
-x1, y1 = [396.3, 532.5], [-2.77, -2.66]
-plt.plot(x1, y1, '--r')
-x1, y1 = [532.6, 615], [-2.66, -2.24]
-plt.plot(x1, y1, '--g')
-plt.legend()
+#third wave
+#x1, y1 = [252.4, 321.8], [-5.23, -3.75]
+#plt.plot(x1, y1, '--g')
+#x1, y1 = [321.9, 360.8], [-3.75, -3.30]
+#plt.plot(x1, y1, '--r')
+#fourth wave
+#x1, y1 = [360.9, 396.2], [-3.30, -2.77]
+#plt.plot(x1, y1, '--g')
+#x1, y1 = [396.3, 532.5], [-2.77, -2.66]
+#plt.plot(x1, y1, '--r')
+#fifth wave
+#x1, y1 = [532.6, 615], [-2.66, -2.24]
+#plt.plot(x1, y1, '--g')
+#plt.legend()
 plt.show()
 
 #       ITALY
@@ -100,23 +105,27 @@ plt.xlabel("Days from begining of epidemic")
 plt.ylabel("Number of Covid cases ")
 plt.title("Normalised Cumulative Covid cases of Italy from 03.01.2020 to 20.09.2021")
 plt.plot(x1,y1,label='The Untited Kingdom', c='y')
-x1, y1 = [22.9, 26], [-17.26, -16.78]
+#first wave
+x1, y1 = [22.9, 99.2], [-17.26, -5.95]
 plt.plot(x1, y1, '--g')
-x1, y1 = [26, 45.3], [-16.78, -16.78]
+x1, y1 = [99.2, 273.4], [-5.95, -5.20]
 plt.plot(x1, y1, '--r')
-x1, y1 = [45.3, 84.3], [-16.77, -6.43]
+#second wave
+x1, y1 = [273.5, 474.3], [-5.20, -2.68]
 plt.plot(x1, y1, '--g')
-x1, y1 = [84.3, 272.8], [-6.43, -5.2]
+x1, y1 = [474.3, 626], [-2.68, -2.55]
 plt.plot(x1, y1, '--r')
-x1, y1 = [272.9, 319.9], [-5.2, -3.79]
-plt.plot(x1, y1, '--g')
-x1, y1 = [319.9, 381.3], [-3.79, -3.17]
-plt.plot(x1, y1, '--r')
-x1, y1 = [381.3, 477.4], [-3.17, -2.69]
-plt.plot(x1, y1, '--g')
-x1, y1 = [477.4, 615], [-2.69, -2.59]
-plt.plot(x1, y1, '--r')
-plt.legend()
+#third wave
+#x1, y1 = [272.9, 319.9], [-5.2, -3.79]
+#plt.plot(x1, y1, '--g')
+#x1, y1 = [319.9, 381.3], [-3.79, -3.17]
+#plt.plot(x1, y1, '--r')
+#fourth wave
+#x1, y1 = [381.3, 477.4], [-3.17, -2.69]
+#plt.plot(x1, y1, '--g')
+#x1, y1 = [477.4, 615], [-2.69, -2.59]
+#plt.plot(x1, y1, '--r')
+#plt.legend()
 plt.show()
 
 #   UNITED STATES OF AMERICA
@@ -132,40 +141,99 @@ plt.xlabel("Days from begining of epidemic")
 plt.ylabel("Number of Covid cases ")
 plt.title("Normalised Cumulative Covid cases of United States of America from 03.01.2020 to 20.09.2021")
 plt.plot(x1,y1,label='United States of America', c='c')
-x1, y1 = [15, 22], [-18, -16]
+#first wave
+x1, y1 = [15, 102.2], [-18, -6.21]
 plt.plot(x1, y1, '--g')
-x1, y1 = [23, 53.9], [-16, -14.84]
+x1, y1 = [102.2, 216.4], [-6.21, -4.22]
 plt.plot(x1, y1, '--r')
-x1, y1 = [54.6, 102.2], [-14.73, -6.21]
+#second wave
+x1, y1 = [216.4, 390.6], [-4.22, -2.48]
 plt.plot(x1, y1, '--g')
-x1, y1 = [102.9, 165.5], [-6.20, -5.02]
+x1, y1 = [390.6, 626], [-2.48, -2.07]
 plt.plot(x1, y1, '--r')
-x1, y1 = [165.6, 218.8], [-5.01, -4.10]
-plt.plot(x1, y1, '--g')
-x1, y1 = [218.9, 313.7], [-4.07, -3.47]
-plt.plot(x1, y1, '--r')
-x1, y1 = [313.8, 391.2], [-3.46, -2.50]
-plt.plot(x1, y1, '--g')
-x1, y1 = [394.9, 614.4], [-2.51, -2.02]
-plt.plot(x1, y1, '--r')
-plt.legend()
+#third wave
+#x1, y1 = [165.6, 218.8], [-5.01, -4.10]
+#plt.plot(x1, y1, '--g')
+#x1, y1 = [218.9, 313.7], [-4.07, -3.47]
+#plt.plot(x1, y1, '--r')
+#fourth wave
+#x1, y1 = [313.8, 391.2], [-3.46, -2.50]
+#plt.plot(x1, y1, '--g')
+#x1, y1 = [394.9, 614.4], [-2.51, -2.02]
+#plt.plot(x1, y1, '--r')
+#plt.legend()
 plt.show()
 
 #******************************************* SLOPE-INTERCEPT   ****************************************************
 
 #                               ************ UNITED KINGDOM ***************
-#
-first_wave_UK = log_Uk_dataset[26:49]
-second_wave_UK = log_Uk_dataset[50:267]
-third_wave_UK = log_Uk_dataset[268:614]
+#first_wave_Uk
+first_wave_UK = log_Uk_dataset[27:258]
+print(log_Uk_dataset)
+x1 = np.arange(1,232)
+y1 = first_wave_UK
+UK_slope_intercept1 = np.polyfit(x1, y1, 1)
+print("         UK SLOPE INTERCEPT 1")
+print(UK_slope_intercept1)
+# second_wave_UK
+second_wave_UK = log_Uk_dataset[259:625]
+x1 = np.arange(1,367)
+y1 = second_wave_UK
+UK_slope_intercept2 = np.polyfit(x1, y1, 1)
+print("         UK SLOPE INTERCEPT 2")
+print(UK_slope_intercept2)
+# third_wave_UK
+#third_wave_UK = log_Uk_dataset[254:361]
+#x1 = np.arange(1,108)
+#y1 = third_wave_UK
+#UK_slope_intercept3 = np.polyfit(x1, y1, 1)
+#print("         UK SLOPE INTERCEPT 3")
+#print(UK_slope_intercept3)
+# fourth_wave_UK
+#fourth_wave_UK = log_Uk_dataset[362:533]
+#x1 = np.arange(1,172)
+#y1 = fourth_wave_UK
+#UK_slope_intercept4 = np.polyfit(x1, y1, 1)
+#print("         UK SLOPE INTERCEPT 4")
+#print(UK_slope_intercept4)
+# fifth_wave_UK
+#fifth_wave_UK = log_Uk_dataset[534:626]
+#x1 = np.arange(1,93)
+#y1 = fifth_wave_UK
+#UK_slope_intercept5 = np.polyfit(x1, y1, 1)
+#print("         UK SLOPE INTERCEPT 5")
+#print(UK_slope_intercept5)
+
 
 #                               *********** ITALY ********************
-#
-first_wave_Italy = log_Italy_dataset[22:45]
-second_wave_Italy = log_Italy_dataset[46:286]
-third_wave_Italy = log_Italy_dataset[287:614]
+# first_wave_Italy
+first_wave_Italy = log_Italy_dataset[25:273]
+x1 = np.arange(1,249)
+y1 = first_wave_Italy
+Italy_slope_intercept1 = np.polyfit(x1, y1, 1)
+print("         ITALY SLOPE INTERCEPT 1")
+print(Italy_slope_intercept1)
+# second_wave_Italy
+second_wave_Italy = log_Italy_dataset[273:625]
+x1 = np.arange(1,353)
+y1 = second_wave_Italy
+Italy_slope_intercept2 = np.polyfit(x1, y1, 1)
+print("         ITALY SLOPE INTERCEPT 2")
+print(Italy_slope_intercept2)
+
 
 #                               ************ USA **********************
-#
-first_wave_USA = log_USA_dataset[15:55]
-second_wave_USA = log_USA_dataset[56:]
+# first_wave_USA
+first_wave_USA = log_USA_dataset[15:216]
+x1 = np.arange(1,202)
+y1 = first_wave_USA
+USA_slope_intercept1 = np.polyfit(x1, y1, 1)
+print("         USA SLOPE INTERCEPT 1")
+print(USA_slope_intercept1)
+# second_wave_USA
+second_wave_USA = log_USA_dataset[216:625]
+x1 = np.arange(1,410)
+y1 = second_wave_USA
+USA_slope_intercept2 = np.polyfit(x1, y1, 1)
+print("         USA SLOPE INTERCEPT 2")
+print(USA_slope_intercept2)
