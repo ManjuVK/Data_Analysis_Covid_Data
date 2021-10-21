@@ -224,8 +224,8 @@ print(Italy_slope_intercept2)
 
 #                               ************ USA **********************
 # first_wave_USA
-first_wave_USA = log_USA_dataset[15:216]
-x1 = np.arange(1,202)
+first_wave_USA = log_USA_dataset[26:216]
+x1 = np.arange(1,191)
 y1 = first_wave_USA
 USA_slope_intercept1 = np.polyfit(x1, y1, 1)
 print("         USA SLOPE INTERCEPT 1")
