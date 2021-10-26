@@ -60,8 +60,8 @@ x1 = np.arange(1,566)
 log_Uk_dataset = np.log(normalised_United_Kingdom_dataset)
 log_Uk_dataset = log_Uk_dataset.dropna()
 y1 = log_Uk_dataset[61:626]
-UK_first_wave = y1[1:210]
-UK_second_wave = y1[211:577]
+UK_first_wave = y1[1:200]
+UK_second_wave = y1[201:566]
 plt.xticks(np.arange(1,566,50))
 plt.xlim(xmin=0)
 plt.xticks(rotation=90)
@@ -79,9 +79,6 @@ x1, y1 = [201.6,340.5 ], [-5.07, -2.81]
 plt.plot(x1, y1, '--g')
 x1, y1 = [340.5, 550.4], [-2.81, -2.32]
 plt.plot(x1, y1, '--r')
-#third wave
-#x1, y1 = [501,551 ], [-2.60, -2.29]
-#plt.plot(x1, y1, '--g')
 plt.grid()
 plt.show()
 
@@ -91,9 +88,6 @@ log_Italy_dataset = np.log(normalised_Italy_dataset)
 log_Italy_dataset = log_Italy_dataset.dropna()
 y1 = log_Italy_dataset[52:626]
 print(y1.count())
-#Italy_first_wave = y1[1:231]
-#Italy_second_wave =y1[232:350]
-#Italy_third_wave = y1[351:576]
 plt.xticks(np.arange(1,575,50))
 plt.xlim(xmin=0)
 plt.xticks(rotation=90)
@@ -111,11 +105,6 @@ x1, y1 = [231.6, 282.2], [-5.11, -3.62]
 plt.plot(x1, y1, '--g')
 x1, y1 = [282.2, 550], [-3.62, -2.60]
 plt.plot(x1, y1, '--r')
-#third wave
-#x1, y1 = [351, 451], [-3.09, -2.65]
-#plt.plot(x1, y1, '--g')
-#x1, y1 = [451, 551], [-2.65, -2.58]
-#plt.plot(x1, y1, '--r')
 plt.grid()
 plt.show()
 
