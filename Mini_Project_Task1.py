@@ -70,9 +70,9 @@ plt.ylabel("Cumulative Covid cases")
 plt.title("Logarithmic graph for United Kingdom from 04.03.2020 to 20.09.2021")
 plt.plot(x1,y1,label='The Untited Kingdom', c='y')
 # first wave
-x1, y1 = [1.1, 42], [-12.65, -6.03]
+x1, y1 = [1.1, 37], [-12.65, -6.72]
 plt.plot(x1, y1, '--g')
-x1, y1 = [55.5, 201.6], [-6.03, -5.07]
+x1, y1 = [37, 201.6], [-6.72, -5.07]
 plt.plot(x1, y1, '--r')
 #second wave
 x1, y1 = [201.6,340.5 ], [-5.07, -2.81]
