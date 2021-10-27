@@ -146,6 +146,46 @@ plt.plot(x1, y3, label = "Error", c="c")
 plt.grid()
 plt.legend()
 plt.show()
+#finding k_value
+x1 = normalised_United_Kingdom_dataset[1:201]
+k_value = x1 * (1 + UK_exp_model_firstwave)/UK_exp_model_firstwave
+print("K VALUE")
+print(k_value)
+x1 = np.arange(1,201)
+y1 = k_value
+plt.title("K value for Wave 1- The United Kingdom")
+plt.xlabel("Days")
+plt.ylabel("Carrying Capacity")
+plt.plot(x1, y1)
+plt.show()
+used_k_value = 0.006021
+norm_data_UKFirstwave = normalised_United_Kingdom_dataset[1:201]
+est_log_model = np.log(abs(norm_data_UKFirstwave/((used_k_value)-(norm_data_UKFirstwave))))
+print(est_log_model)
+# find slope of logistic
+y1 = est_log_model
+x2 = np.arange(1,201)
+est_log_slope  = np.polyfit(x2, y1, 1)
+print("Slope Intercept")
+print(est_log_slope)
+slope = 0.03458301
+intercept = -3.29141529
+exponential_log = np.exp(intercept + slope * x2)
+Logistic_model = used_k_value * exponential_log/(1+exponential_log)
+print("Logistic")
+print(Logistic_model)
+error = norm_data_UKFirstwave - Logistic_model
+x1 = np.arange(1,201)
+y1 = Logistic_model
+y2 =norm_data_UKFirstwave
+plt.title("Logistic Model Prediction for Wave 1-UK")
+plt.ylabel("Cumulative fraction")
+plt.xlabel("Days from begining")
+plt.plot(x1,y1,label='Logistic',c='r')
+plt.plot(x1,y2,label='Observed',c='g')
+plt.legend()
+plt.show()
 #second wave
+
 
 
