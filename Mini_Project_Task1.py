@@ -20,7 +20,7 @@ y2 = Italy
 y3 = United_States_of_America
 plt.xticks(np.arange(1,628,50))
 plt.xlim(xmin=0)
-plt.xticks(rotation=90)
+plt.xticks(rotation=0)
 plt.xlabel("Days from begining of epidemic")
 plt.ylabel("Number of Covid cases")
 plt.title("Cumulative Covid cases of United Kingdom, Italy, USA from 03.01.2020 to 20.09.2021")
@@ -44,7 +44,7 @@ y2 = normalised_Italy_dataset
 y3 = normalised_USA_dataset
 plt.xticks(np.arange(1,628,50))
 plt.xlim(xmin=0)
-plt.xticks(rotation=90)
+plt.xticks(rotation=0)
 plt.xlabel("Days from begining of epidemic")
 plt.ylabel("Number of Covid cases")
 plt.title("Normalised Cumulative Covid cases of United Kingdom, Italy, USA from 03.01.2020 to 20.09.2021")
@@ -61,16 +61,16 @@ log_Uk_dataset = np.log(normalised_United_Kingdom_dataset)
 log_Uk_dataset = log_Uk_dataset.dropna()
 y1 = log_Uk_dataset[61:626]
 UK_first_wave = y1[1:200]
-UK_second_wave = y1[201:566]
+UK_second_wave = y1[200:566]
 plt.xticks(np.arange(1,566,50))
 plt.xlim(xmin=0)
-plt.xticks(rotation=90)
+plt.xticks(rotation=0)
 plt.xlabel("Days from Cumulative cases = 100")
 plt.ylabel("Cumulative Covid cases")
 plt.title("Logarithmic graph for United Kingdom from 04.03.2020 to 20.09.2021")
 plt.plot(x1,y1,label='The Untited Kingdom', c='y')
 # first wave
-x1, y1 = [1.1, 55.5], [-12.65, -6.03]
+x1, y1 = [1.1, 42], [-12.65, -6.03]
 plt.plot(x1, y1, '--g')
 x1, y1 = [55.5, 201.6], [-6.03, -5.07]
 plt.plot(x1, y1, '--r')
@@ -81,16 +81,150 @@ x1, y1 = [340.5, 550.4], [-2.81, -2.32]
 plt.plot(x1, y1, '--r')
 plt.grid()
 plt.show()
+#****************************** SLOPE INTERCEPT*******************************88
+# first_wave_Uk
+x1 = np.arange(1,200)
+y1 = UK_first_wave
+plt.xticks(np.arange(1,200,50))
+plt.xlim(xmin=0)
+plt.xticks(rotation=0)
+plt.xlabel("Days from begining of epidemic")
+plt.ylabel("Cumulative Covid cases")
+plt.title("Expected model prediction for Wave 1- The United Kingdom")
+plt.plot(x1,y1,label='The Untited Kingdom', c='b')
+# first wave
+x1, y1 = [0.9, 55.5], [-12.39, -6.03]
+plt.plot(x1, y1, '--g')
+x1, y1 = [55.5, 201.6], [-6.03, -5.07]
+plt.plot(x1, y1, '--r')
+plt.grid()
+plt.show()
+#first segment
+x1 = np.arange(1,38)
+y1 = UK_first_wave[1:38]
+UK_slope_intercept1 = np.polyfit(x1, y1, 1)
+print("         UK SLOPE INTERCEPT 1")
+print(UK_slope_intercept1)
+slope = 0.15483199
+intercept = -11.70299942
+UK_exp_model1 = np.exp(intercept + slope * x1)
+print("UK_EXPECTED MODEL")
+print(UK_exp_model1)
+y1 = normalised_United_Kingdom_dataset[61:98]
+y2 = UK_exp_model1
+y3 = y1 - y2
+plt.xticks(np.arange(1,38,5))
+plt.title("Expected model prediction for Wave 1- The United Kingdom")
+plt.plot(x1,y1,label='Observed wave', c='b')
+plt.plot(x1,y2,label= 'Predicted wave', c='r')
+plt.plot(x1,y3,label= 'Error', c='c')
+plt.legend()
+plt.show()
+
+
+#
+x1 = np.arange(1,200)
+y1 = UK_first_wave
+#UK_slope_intercept1 = np.polyfit(x1, y1, 1)
+#print("         UK SLOPE INTERCEPT 1")
+#print(UK_slope_intercept1)
+slope = 0.15483199
+intercept = -11.70299942
+UK_exp_model1 = np.exp(intercept + slope * x1)
+print("UK_EXPECTED MODEL")
+print(UK_exp_model1)
+y1 = normalised_United_Kingdom_dataset[61:260]
+y2 = UK_exp_model1
+y3 = y1 - y2
+plt.xticks(np.arange(1,200,50))
+plt.title("Expected model prediction for Wave 1- The United Kingdom")
+plt.plot(x1,y1,label='Observed wave', c='b')
+plt.plot(x1,y2,label= 'Predicted wave', c='r')
+plt.plot(x1,y3,label= 'Error', c='c')
+plt.legend()
+plt.show()
+
+#second wave
+x1 = np.arange(1,366)
+y1 = UK_second_wave
+plt.xticks(np.arange(1,366,50))
+plt.xlim(xmin=0)
+plt.xticks(rotation=0)
+plt.xlabel("Days from begining of epidemic")
+plt.ylabel("Cumulative Covid cases")
+plt.title("Expected model prediction for Wave 2- The United Kingdom")
+plt.plot(x1,y1,label='The Untited Kingdom', c='b')
+x1, y1 = [1.4,127 ], [-5.095, -2.890]
+plt.plot(x1, y1, '--g')
+x1, y1 = [127, 350.3], [-2.890, -2.252]
+plt.plot(x1, y1, '--r')
+plt.grid()
+plt.show()
+#first segment
+x1 = np.arange(1,126)
+y1 = UK_second_wave[1:126]
+UK_slope_intercept2 = np.polyfit(x1, y1, 1)
+print("         UK SLOPE INTERCEPT WAVE 2")
+print(UK_slope_intercept2)
+slope = .01719461
+intercept = -4.96773991
+UK_exp_model2 = np.exp(intercept + slope * x1)
+print("UK_EXPECTED MODEL")
+print(UK_exp_model1)
+y1 = normalised_United_Kingdom_dataset[262:387]
+y2 = UK_exp_model2
+y3 = y1 - y2
+plt.xticks(np.arange(1,200,50))
+plt.title("Expected model prediction for Wave 2- The United Kingdom")
+plt.plot(x1,y1,label='Observed wave', c='b')
+plt.plot(x1,y2,label= 'Predicted wave', c='r')
+plt.plot(x1,y3,label= 'Error', c='c')
+plt.legend()
+plt.show()
+# FIND K_VALUE of 1st wave
+x1 = normalised_United_Kingdom_dataset[61:260]
+y1 = x1*(1 + UK_exp_model1)/UK_exp_model1
+plt.title("K value for Wave 1- The United Kingdom")
+plt.plot(x1, y1)
+plt.show()
+print("K VALUE")
+print(y1)
+used_k_value =0.005871
+log_absvalue = np.log(abs(x1/(used_k_value-x1)))
+y1 = log_absvalue
+x2 = np.arange(1,200)
+print("ABS VALUE")
+print(log_absvalue)
+#slope of abs value
+log_abs_value_slope = np.polyfit(x2, y1, 1)
+print("slope intercept of abs value")
+print(log_abs_value_slope)
+slope = 0.03394197
+intercept = -3.3821157
+exp_log_abs = np.exp(intercept+slope*x2)
+Logistic_model = used_k_value * exp_log_abs/(1+exp_log_abs)
+print("Logistic")
+print(Logistic_model)
+error = x1 - Logistic_model
+x1 = np.arange(1,200)
+y1 = Logistic_model
+y2 = normalised_United_Kingdom_dataset[61:260]
+plt.plot(x1,y1,label='Logistic',c='r')
+plt.plot(x1,y2,label='Observed',c='g')
+plt.show()
+
 
 #       ITALY
 x1 = np.arange(1,575)
 log_Italy_dataset = np.log(normalised_Italy_dataset)
 log_Italy_dataset = log_Italy_dataset.dropna()
 y1 = log_Italy_dataset[52:626]
+Italy_first_wave = y1[1:230]
+Italy_second_wave = y1[231:575]
 print(y1.count())
 plt.xticks(np.arange(1,575,50))
 plt.xlim(xmin=0)
-plt.xticks(rotation=90)
+plt.xticks(rotation=0)
 plt.xlabel("Days from Cumulative cases = 100")
 plt.ylabel("Cumulative  Covid cases ")
 plt.title("Logarithmic graph for Italy from 24.02.2020 to 20.09.2021")
@@ -113,13 +247,12 @@ x1 = np.arange(1,575)
 log_USA_dataset = np.log(normalised_USA_dataset)
 log_USA_dataset = log_USA_dataset.dropna()
 y1 = log_USA_dataset[52:626]
-USA_first_wave = y1[1:122]
-USA_second_wave = y1[123:247]
-USA_third_wave = y1[248:577]
+USA_first_wave = y1[1:232]
+USA_second_wave = y1[233:575]
 print(y1)
 plt.xticks(np.arange(1,575,50))
 plt.xlim(xmin=0)
-plt.xticks(rotation=90)
+plt.xticks(rotation=0)
 plt.xlabel("Days from Cumulative cases = 100")
 plt.ylabel("Cumulative Covid cases ")
 plt.title("Logarithmic graph for United States of America from 24.02.2020 to 20.09.2021")
@@ -134,7 +267,6 @@ x1, y1 = [232.7, 349.9], [-3.76, -2.47]
 plt.plot(x1, y1, '--g')
 x1, y1 = [349.9, 550.4], [-2.47, -2.17]
 plt.plot(x1, y1, '--r')
-
 plt.grid()
 plt.show()
 
@@ -142,29 +274,14 @@ plt.show()
 #                                           SLOPE-INTERCEPT
 
 #                               ************ UNITED KINGDOM ***************
-# first_wave_Uk
-x1 = np.arange(1,210)
-y1 = UK_first_wave
-plt.xticks(np.arange(1,210,50))
-plt.xlim(xmin=0)
-plt.xticks(rotation=90)
-plt.xlabel("Days from begining of epidemic")
-plt.ylabel("Cumulative Covid cases")
-plt.title("Expected model prediction for Wave 1- The United Kingdom")
-plt.plot(x1,y1,label='The Untited Kingdom', c='black')
-# first wave
-x1, y1 = [1.1, 62.17], [-15.64, -6.10]
-plt.plot(x1, y1, '--g')
-x1, y1 = [62.17, 200.2], [-6.10, -5.25]
-plt.plot(x1, y1, '--r')
-plt.show()
-#first segment
 
-
-
-
-
-
+#plt.xticks(np.arange(1,200,25))
+#plt.title("Expected model prediction for Wave 1- The United Kingdom")
+#plt.plot(x1,y1,label='Observed wave', c='b')
+#plt.plot(x1,y2,label= 'Predicted wave', c='r')
+#plt.plot(x1,y3,label= 'Error', c='c')
+#plt.legend()
+#plt.show()
 
 
 
@@ -172,24 +289,16 @@ plt.show()
 
 
 # first_segment
-x1 = np.arange(1,62)
+
 #x1 = np.arange(1,210)
 #y1 = log_Uk_dataset[51:112]
-#UK_slope_intercept1 = np.polyfit(x1, y1, 1)
-#print("         UK SLOPE INTERCEPT 1")
-#print(UK_slope_intercept1)
+#
+
 y1 = log_Uk_dataset[51:260]
 slope = 0.15778639
 intercept = -14.2349729
-UK_exp_model1 = np.exp(intercept + slope * x1)
-print("UK_EXPECTED MODEL")
-print(UK_exp_model1)
-y2 = UK_exp_model1
-plt.title("Expected model prediction for Wave 1- The United Kingdom")
-plt.plot(x1,y1,label='Observed wave', c='b')
-plt.plot(x1,y2,label= 'predicted wave', c='r')
-plt.legend()
-plt.show()
+
+
 
 # second_wave_UK
 x1 = np.arange(1,300)
