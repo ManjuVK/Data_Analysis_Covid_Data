@@ -82,17 +82,33 @@ plt.xlabel("Days from Cumulative cases = 100")
 plt.ylabel("Cumulative Covid cases")
 plt.title("Logarithmic graph for United Kingdom from 04.03.2020 to 20.09.2021")
 plt.plot(x1,y1,label='The Untited Kingdom', c='y')
-# first wave
 x1, y1 = [1.1, 37], [-12.65, -6.72]
 plt.plot(x1, y1, '--g')
 x1, y1 = [37, 70.5], [-6.72, -5.70]
 plt.plot(x1, y1, '--r')
 x1, y1 = [70.5, 201.6], [-5.70, -5.07]
 plt.plot(x1, y1, '--g')
-#second wave
 x1, y1 = [201.6,340.5 ], [-5.07, -2.81]
 plt.plot(x1, y1, '--r')
 x1, y1 = [340.5, 550.4], [-2.81, -2.32]
 plt.plot(x1, y1, '--g')
 plt.grid()
 plt.show()
+# first wave
+x1 = np.arange(1,200)
+y1 = UK_first_wave
+plt.xticks(np.arange(1,200,50))
+plt.ylabel("Number of Days")
+plt.xlabel("Cumulative cases")
+plt.title("First wave of UK")
+plt.plot(x1, y1,label="UK First Wave", c="y")
+x1, y1 = [0.8, 37], [-12.43, -6.67]
+plt.plot(x1, y1, '--g')
+x1, y1 = [37, 199], [-6.67, -5.11]
+plt.plot(x1, y1, '--r')
+plt.grid()
+plt.show()
+
+#second wave
+UK_second_wave = y1[200:]
+
