@@ -154,7 +154,7 @@ plt.show()
 #finding k_value
 x1 = normalised_United_Kingdom_dataset[1:201]
 k_value = x1 * (1 + UK_exp_model_firstwave)/UK_exp_model_firstwave
-print("K VALUE")
+print("K VALUE of UK_first wave")
 print(k_value)
 x1 = np.arange(1,201)
 y1 = k_value

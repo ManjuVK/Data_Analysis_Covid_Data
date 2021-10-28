@@ -91,3 +91,45 @@ sns.lineplot(x2, y3)
 plt.legend(labels=["Predicted","Observed", "Error"])
 plt.grid()
 plt.show()
+# finding k value
+x1 = normalised_USA_dataset[1:232]
+k_value = x1 * (1 + USA_exp_model_firstwave)/USA_exp_model_firstwave
+print("k value of USA first wave")
+print(k_value)
+x1 = np.arange(1,232)
+y1 = k_value
+plt.title("K value for Wave 1- United States of America")
+plt.xlabel("Days")
+plt.ylabel("Carrying Capacity")
+plt.plot(x1, y1)
+plt.show()
+used_k_value = 0.023342
+norm_data_USAFirstwave = normalised_USA_dataset[1:232]
+est_log_model = np.log(abs(norm_data_USAFirstwave/((used_k_value)-(norm_data_USAFirstwave))))
+print(est_log_model)
+# find slope of logistic
+y1 = est_log_model
+x2 = np.arange(1,232)
+est_log_slope  = np.polyfit(x2, y1, 1)
+print("Slope Intercept")
+print(est_log_slope)
+slope = 0.04559845
+intercept = - 6.55652335
+exponential_log = np.exp(intercept + slope * x2)
+Logistic_model = used_k_value * exponential_log/(1+exponential_log)
+print("Logistic")
+print(Logistic_model)
+error = norm_data_USAFirstwave - Logistic_model
+SSE_Logistic_USAWave1 = sum(error)
+print("Error")
+print(SSE_Logistic_USAWave1)
+x1 = np.arange(1,232)
+y1 = Logistic_model
+y2 =norm_data_USAFirstwave
+plt.title("Logistic Model Prediction for Wave 1-USA")
+plt.ylabel("Cumulative fraction")
+plt.xlabel("Days from begining")
+plt.plot(x1,y1,label='Logistic',c='r')
+plt.plot(x1,y2,label='Observed',c='g')
+plt.legend()
+plt.show()
