@@ -180,6 +180,9 @@ Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
 error = norm_data_UKFirstwave - Logistic_model
+SSE_Logistic_UKWave1 = sum(error)
+print("Error")
+print(SSE_Logistic_UKWave1)
 x1 = np.arange(1,201)
 y1 = Logistic_model
 y2 =norm_data_UKFirstwave
@@ -264,7 +267,7 @@ plt.xlabel("Days")
 plt.ylabel("Carrying Capacity")
 plt.plot(x1, y1)
 plt.show()
-used_k_value = 0.065
+used_k_value =0.07
 norm_data_UKSecondwave = second_wave_data[:-2]
 est_log_model = np.log(abs(norm_data_UKSecondwave/((used_k_value)-(norm_data_UKSecondwave))))
 print(est_log_model)
@@ -281,10 +284,13 @@ Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
 error = norm_data_UKSecondwave - Logistic_model
+SSE_logistic_UKWave2 = sum(error)
+print("Error")
+print(SSE_logistic_UKWave2)
 x1 = np.arange(1,364)
 y1 = Logistic_model
 y2 = norm_data_UKSecondwave
-plt.title("Logistic Model Prediction for Wave 1-UK")
+plt.title("Logistic Model Prediction for Wave 2-UK")
 plt.ylabel("Cumulative fraction")
 plt.xlabel("Days from begining")
 plt.plot(x1,y1,label='Logistic',c='r')
