@@ -199,6 +199,9 @@ plt.show()
 x1 = second_wave_data[:-2]
 k_value = x1 * (1 + USA_exp_model_secondwave)/USA_exp_model_secondwave
 print("K VALUE")
+f = k_value.to_numpy()
+print("************************f")
+print(f)
 print(k_value)
 x1 = np.arange(1,342)
 y1 = k_value
@@ -207,7 +210,7 @@ plt.xlabel("Days")
 plt.ylabel("Carrying Capacity")
 plt.plot(x1, y1)
 plt.show()
-used_k_value = 0.075
+used_k_value = 0.10254377#.07663918#0.07638732 #0.08049084#0.08557368 #0.075
 norm_data_USASecondwave = second_wave_data[:-2]
 est_log_model = np.log(abs(norm_data_USASecondwave/((used_k_value)-(norm_data_USASecondwave))))
 print(est_log_model)
