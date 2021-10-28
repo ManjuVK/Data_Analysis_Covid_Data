@@ -22,7 +22,7 @@ plt.xticks(np.arange(1,628,50))
 plt.xlim(xmin=0)
 plt.xticks(rotation=0)
 plt.xlabel("Days from begining of epidemic")
-plt.ylabel("Number of Covid cases")
+plt.ylabel("Number of Covid cases(in millions)")
 plt.title("Cumulative Covid cases of United Kingdom, Italy, USA from 03.01.2020 to 20.09.2021")
 plt.plot(x1,y1,label='The Untited Kingdom', c='m')
 plt.plot(x1,y2,label= 'Italy', c='y')
@@ -45,7 +45,7 @@ plt.xticks(np.arange(1,567,50))
 plt.xlim(xmin=0)
 plt.xticks(rotation=0)
 plt.xlabel("Days from Cumulative cases = 100")
-plt.ylabel("Number of Covid cases")
+plt.ylabel("Number of Covid cases(in millions)")
 plt.title("Normalised Cumulative cases of United Kingdom from 04.03..2020 to 20.09.2021")
 plt.plot(x1,y1,label='The Untited Kingdom', c='m')
 plt.tight_layout()
@@ -59,12 +59,13 @@ plt.xticks(np.arange(1,576,50))
 plt.xlim(xmin=0)
 plt.xticks(rotation=0)
 plt.xlabel("Days from Cumulative cases = 100")
-plt.ylabel("Number of Covid cases")
+plt.ylabel("Number of Covid cases(in millions)")
 plt.title("Normalised Cumulative cases of United States, Italy from 24.02.2020 to 20.09.2021")
 plt.plot(x1,y1,label='Italy', c='c')
 plt.plot(x1,y2,label='United States of America', c='y')
 plt.tight_layout()
 plt.grid()
+plt.legend()
 plt.show()
 
 #****************************************** TASK 5 *****************************************************************
@@ -101,9 +102,9 @@ plt.show()
 x1 = np.arange(1,201)
 y1 = UK_first_wave
 plt.xticks(np.arange(1,201,50))
-plt.ylabel("Number of Days")
-plt.xlabel("Cumulative cases")
-plt.title("First wave of UK")
+plt.xlabel("Number of Days")
+plt.ylabel("Cumulative cases")
+plt.title("Logarithmic graph of UK_first wave")
 plt.plot(x1, y1,label="UK First Wave", c="y")
 x1, y1 = [0.8, 37], [-12.43, -6.67]
 plt.plot(x1, y1, '--g')
@@ -135,13 +136,13 @@ plt.legend()
 plt.show()
 #prediction for 1st UK wave
 x1 = np.arange(1,201)
-x2 = np.arange(1,38)
+x2 = np.arange(1,50)
 y1 = normalised_United_Kingdom_dataset[1:201]
 UK_exp_model_firstwave = np.exp(intercept + slope * x1)
-y1 = UK_exp_model1
+y1 = UK_exp_model_firstwave[1:50]
 y2 = normalised_United_Kingdom_dataset[1:201]
-y3 = y2[1:38] - y1
-plt.title("Exponential growth of UK for first Wave ")
+y3 = y2[1:50] - y1
+plt.title("Exponential growth of UK_First Wave ")
 plt.xlabel("Days")
 plt.ylabel("Number of cases")
 sns.lineplot(x2,y1)
@@ -155,15 +156,19 @@ plt.show()
 x1 = normalised_United_Kingdom_dataset[1:201]
 k_value = x1 * (1 + UK_exp_model_firstwave)/UK_exp_model_firstwave
 print("K VALUE of UK_first wave")
+f = k_value.to_numpy()
+print("********************F")
+print(f)
 print(k_value)
 x1 = np.arange(1,201)
 y1 = k_value
+
 plt.title("K value for Wave 1- The United Kingdom")
 plt.xlabel("Days")
 plt.ylabel("Carrying Capacity")
 plt.plot(x1, y1)
 plt.show()
-used_k_value = 0.006021
+used_k_value = 0.00477107
 norm_data_UKFirstwave = normalised_United_Kingdom_dataset[1:201]
 est_log_model = np.log(abs(norm_data_UKFirstwave/((used_k_value)-(norm_data_UKFirstwave))))
 print(est_log_model)
@@ -175,7 +180,7 @@ print("Slope Intercept")
 print(est_log_slope)
 slope = 0.03458301
 intercept = -3.29141529
-exponential_log = np.exp(intercept + slope * x2)
+exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
@@ -205,8 +210,8 @@ UK_second_wave = UK_second_wave.dropna()
 print(UK_second_wave)
 y1 = UK_second_wave
 plt.xticks(np.arange(1,364,50))
-plt.ylabel("Number of Days")
-plt.xlabel("Cumulative cases")
+plt.xlabel("Number of Days")
+plt.ylabel("Cumulative cases")
 plt.title("Second wave of UK")
 plt.plot(x1, y1,label="UK Second Wave", c="y")
 x1, y1 = [2.2,69.6 ], [-9.43, -3.97]
@@ -239,12 +244,12 @@ plt.legend()
 plt.show()
 #prediction for 2nd UK wave
 x1 = np.arange(1,364)
-x2 = np.arange(1,70)
+x2 = np.arange(1,90)
 y1 = second_wave_data[:-2]
 UK_exp_model_secondwave = np.exp(intercept + slope * x1)
-y1 = UK_exp_model1
+y1 = UK_exp_model_secondwave[1:90]
 y2 = second_wave_data[:-2]
-y3 = y2[1:70] - y1
+y3 = y2[1:90] - y1
 plt.title("Exponential growth of UK for Second Wave ")
 plt.xlabel("Days")
 plt.ylabel("Number of cases")
@@ -278,7 +283,7 @@ print("                Slope Intercept")
 print(est_log_slope)
 slope = 0.01444578# .01390938 #0.03458301
 intercept = -1.745269330#-1.67991815#-3.29141529
-exponential_log = np.exp(intercept + slope * x2)
+exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)

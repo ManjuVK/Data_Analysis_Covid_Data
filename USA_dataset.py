@@ -204,7 +204,7 @@ plt.xlabel("Days")
 plt.ylabel("Carrying Capacity")
 plt.plot(x1, y1)
 plt.show()
-used_k_value = 0.065
+used_k_value = 0.075
 norm_data_USASecondwave = second_wave_data[:-2]
 est_log_model = np.log(abs(norm_data_USASecondwave/((used_k_value)-(norm_data_USASecondwave))))
 print(est_log_model)
@@ -216,7 +216,7 @@ print("                Slope Intercept")
 print(est_log_slope)
 slope = 0.01062648
 intercept = -0.60874079
-exponential_log = np.exp(intercept + slope * x2)
+exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
