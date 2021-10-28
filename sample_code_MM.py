@@ -3,6 +3,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 
 #                               READ DATASET
 dataset = pd.read_csv("./WHO-COVID-19-global-data (1).csv")
@@ -134,19 +135,21 @@ plt.legend()
 plt.show()
 #prediction for 1st UK wave
 x1 = np.arange(1,201)
+x2 = np.arange(1,38)
 y1 = normalised_United_Kingdom_dataset[1:201]
 UK_exp_model_firstwave = np.exp(intercept + slope * x1)
-y1 = UK_exp_model_firstwave
+y1 = UK_exp_model1
 y2 = normalised_United_Kingdom_dataset[1:201]
-y3 = y2 - y1
+y3 = y2[1:38] - y1
 plt.title("Exponential growth of UK for first Wave ")
 plt.xlabel("Days")
 plt.ylabel("Number of cases")
-plt.plot(x1, y1 ,label="Predicted wave",c="r")
-plt.plot(x1, y2 ,label="Observed wave",c="b")
-plt.plot(x1, y3, label = "Error", c="c")
+sns.lineplot(x2,y1)
+sns.lineplot(x1, y2)
+sns.lineplot(x2, y3)
+plt.legend(labels=["Predicted","Observed", "Error"])
 plt.grid()
-plt.legend()
+#plt.legend()
 plt.show()
 #finding k_value
 x1 = normalised_United_Kingdom_dataset[1:201]
@@ -234,19 +237,20 @@ plt.legend()
 plt.show()
 #prediction for 2nd UK wave
 x1 = np.arange(1,364)
+x2 = np.arange(1,70)
 y1 = second_wave_data[:-2]
 UK_exp_model_secondwave = np.exp(intercept + slope * x1)
-y1 = UK_exp_model_secondwave
+y1 = UK_exp_model1
 y2 = second_wave_data[:-2]
-y3 = y2 - y1
+y3 = y2[1:70] - y1
 plt.title("Exponential growth of UK for Second Wave ")
 plt.xlabel("Days")
 plt.ylabel("Number of cases")
-plt.plot(x1, y1 ,label="Predicted wave",c="r")
-plt.plot(x1, y2 ,label="Observed wave",c="b")
-plt.plot(x1, y3, label = "Error", c="c")
+sns.lineplot(x2,y1)
+sns.lineplot(x1, y2)
+sns.lineplot(x2, y3)
+plt.legend(labels=["Predicted","Observed", "Error"])
 plt.grid()
-plt.legend()
 plt.show()
 #finding k_value
 x1 = second_wave_data[:-2]
