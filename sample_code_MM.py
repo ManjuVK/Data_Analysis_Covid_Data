@@ -74,7 +74,7 @@ log_Uk_dataset = np.log(normalised_United_Kingdom_dataset)
 log_Uk_dataset = log_Uk_dataset.dropna()
 y1 = log_Uk_dataset
 UK_first_wave = y1[1:201]
-UK_second_wave = y1[201:]
+
 normalised_firstwave = normalised_United_Kingdom_dataset[1:201]
 normalised_secondwave = normalised_United_Kingdom_dataset[201:]
 plt.xticks(np.arange(1,567,50))
@@ -189,31 +189,39 @@ plt.legend()
 plt.show()
 #**************************************************** UK second wave*********************************************
 
-x1 = np.arange(1,366)
+x1 = np.arange(1,364)
+y1 = normalised_United_Kingdom_dataset[201:]
+#x = normalised_United_Kingdom_dataset[200:201]
+second_wave_data = (normalised_United_Kingdom_dataset[201:]-0.006021)
+print(second_wave_data)
+
+UK_second_wave = np.log(second_wave_data)
+UK_second_wave = UK_second_wave.dropna()
+print(UK_second_wave)
 y1 = UK_second_wave
-plt.xticks(np.arange(1,366,50))
+plt.xticks(np.arange(1,364,50))
 plt.ylabel("Number of Days")
 plt.xlabel("Cumulative cases")
 plt.title("Second wave of UK")
 plt.plot(x1, y1,label="UK Second Wave", c="y")
-x1, y1 = [1.4,127 ], [-5.095, -2.890]
+x1, y1 = [2.2,69.6 ], [-9.43, -3.97]
 plt.plot(x1, y1, '--g')
-x1, y1 = [127, 350.3], [-2.890, -2.252]
+x1, y1 = [69.6, 363.4], [-3.97, -2.26]
 plt.plot(x1, y1, '--r')
 plt.grid()
 plt.show()
 #finding slope and intercept
-x1 = np.arange(1,141)
-UK_firstsegment2 = UK_second_wave[1:141]
+x1 = np.arange(1,70)
+UK_firstsegment2 = UK_second_wave[1:70]
 y1 = UK_firstsegment2
 UK_slope_intercept1 = np.polyfit(x1, y1, 1)
 print("UK Second wave- slope & intercept")
 print(UK_slope_intercept1)
-slope = 0.0162794
-intercept = -4.90739143
+slope = 0.05313022
+intercept = -7.05400091
 UK_exp_model1 = np.exp(intercept + slope * x1)
 y1 = UK_exp_model1
-y2 = normalised_United_Kingdom_dataset[201:341]
+y2 = second_wave_data[1:70]
 y3 = y2 - y1
 plt.title("Exponential growth of UK for first segment in Wave 2 ")
 plt.xlabel("Days")
@@ -225,11 +233,11 @@ plt.grid()
 plt.legend()
 plt.show()
 #prediction for 2nd UK wave
-x1 = np.arange(1,366)
-y1 = normalised_United_Kingdom_dataset[201:566]
+x1 = np.arange(1,364)
+y1 = second_wave_data[:-2]
 UK_exp_model_secondwave = np.exp(intercept + slope * x1)
 y1 = UK_exp_model_secondwave
-y2 = normalised_United_Kingdom_dataset[201:566]
+y2 = second_wave_data[:-2]
 y3 = y2 - y1
 plt.title("Exponential growth of UK for Second Wave ")
 plt.xlabel("Days")
@@ -241,37 +249,37 @@ plt.grid()
 plt.legend()
 plt.show()
 #finding k_value
-x1 = normalised_United_Kingdom_dataset[201:566]
+x1 = second_wave_data[:-2]
 k_value = x1 * (1 + UK_exp_model_secondwave)/UK_exp_model_secondwave
 print("K VALUE")
 print(k_value)
-x1 = np.arange(1,365)
+x1 = np.arange(1,364)
 y1 = k_value
 plt.title("K value for Wave 2- The United Kingdom")
 plt.xlabel("Days")
 plt.ylabel("Carrying Capacity")
 plt.plot(x1, y1)
 plt.show()
-used_k_value = 0.153
-norm_data_UKSecondwave = normalised_United_Kingdom_dataset[201:565]
+used_k_value = 0.065
+norm_data_UKSecondwave = second_wave_data[:-2]
 est_log_model = np.log(abs(norm_data_UKSecondwave/((used_k_value)-(norm_data_UKSecondwave))))
 print(est_log_model)
 # find slope of logistic
 y1 = est_log_model
-x2 = np.arange(1,366)
+x2 = np.arange(1,364)
 est_log_slope = np.polyfit(x2, y1, 1)
 print("                Slope Intercept")
 print(est_log_slope)
-slope = 0.03458301
-intercept = -3.29141529
+slope = 0.01444578# .01390938 #0.03458301
+intercept = -1.745269330#-1.67991815#-3.29141529
 exponential_log = np.exp(intercept + slope * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
 error = norm_data_UKSecondwave - Logistic_model
-x1 = np.arange(1,366)
+x1 = np.arange(1,364)
 y1 = Logistic_model
-y2 =norm_data_UKFirstwave
+y2 = norm_data_UKSecondwave
 plt.title("Logistic Model Prediction for Wave 1-UK")
 plt.ylabel("Cumulative fraction")
 plt.xlabel("Days from begining")
