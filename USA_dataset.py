@@ -76,12 +76,12 @@ plt.legend()
 plt.show()
 # prediction of 1st USA wave
 x1 = np.arange(1,232)
-x2 = np.arange(1,57)
+x2 = np.arange(1,70)
 y1 = normalised_USA_dataset[1:232]
 USA_exp_model_firstwave = np.exp(intercept + slope * x1)
-y1 = USA_exp_model1
+y1 = USA_exp_model_firstwave[1:70]
 y2 = normalised_USA_dataset[1:232]
-y3 = y2[1:57] - y1
+y3 = y2[1:70] - y1
 plt.title("Exponential growth of USA for first Wave ")
 plt.xlabel("Days")
 plt.ylabel("Number of cases")
@@ -95,6 +95,9 @@ plt.show()
 x1 = normalised_USA_dataset[1:232]
 k_value = x1 * (1 + USA_exp_model_firstwave)/USA_exp_model_firstwave
 print("k value of USA first wave")
+f = k_value.to_numpy()
+print("************************f")
+print(f)
 print(k_value)
 x1 = np.arange(1,232)
 y1 = k_value
@@ -103,7 +106,7 @@ plt.xlabel("Days")
 plt.ylabel("Carrying Capacity")
 plt.plot(x1, y1)
 plt.show()
-used_k_value = 0.023342
+used_k_value = 0.02023205
 norm_data_USAFirstwave = normalised_USA_dataset[1:232]
 est_log_model = np.log(abs(norm_data_USAFirstwave/((used_k_value)-(norm_data_USAFirstwave))))
 print(est_log_model)
@@ -115,7 +118,7 @@ print("Slope Intercept")
 print(est_log_slope)
 slope = 0.04559845
 intercept = - 6.55652335
-exponential_log = np.exp(intercept + slope * x2)
+exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
@@ -145,8 +148,8 @@ x1 = np.arange(1, 342)
 plt.xticks(np.arange(1,342,50))
 plt.ylabel("Number of Days")
 plt.xlabel("Cumulative cases")
-plt.title("Second wave of UK")
-plt.plot(x1, y1,label="UK Second Wave", c="y")
+plt.title("Second wave of USA")
+plt.plot(x1, y1,label="USA Second Wave", c="y")
 x1, y1 = [0.9, 50.3], [-8.80, -3.95]
 plt.plot(x1, y1, '--g')
 x1, y1 = [50.3, 340.9], [-3.95, -2.28]
@@ -158,7 +161,7 @@ x1 = np.arange(1,51)
 USA_firstsegment2 = USA_second_wave[1:51]
 y1 = USA_firstsegment2
 USA_slope_intercept1 = np.polyfit(x1, y1, 1)
-print("UK Second wave- slope & intercept")
+print("USA Second wave- slope & intercept")
 print(USA_slope_intercept1)
 slope = 0.0684613
 intercept = -6.99039617
@@ -177,12 +180,12 @@ plt.legend()
 plt.show()
 #prediction for 2nd USA wave
 x1 = np.arange(1,342)
-x2 = np.arange(1,51)
+x2 = np.arange(1,70)
 y1 = second_wave_data[:-2]
 USA_exp_model_secondwave = np.exp(intercept + slope * x1)
-y1 = USA_exp_model1
+y1 = USA_exp_model_secondwave[1:70]
 y2 = second_wave_data[:-2]
-y3 = y2[1:51] - y1
+y3 = y2[1:70] - y1
 plt.title("Exponential growth of USA for Second Wave ")
 plt.xlabel("Days")
 plt.ylabel("Number of cases")
@@ -221,13 +224,13 @@ Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
 error = norm_data_USASecondwave - Logistic_model
-SSE_logistic_UKWave2 = sum(error)
+SSE_logistic_USAWave2 = sum(error)
 print("Error")
-print(SSE_logistic_UKWave2)
+print(SSE_logistic_USAWave2)
 x1 = np.arange(1,342)
 y1 = Logistic_model
 y2 = norm_data_USASecondwave
-plt.title("Logistic Model Prediction for Wave 2-UK")
+plt.title("Logistic Model Prediction for Wave 2-USA")
 plt.ylabel("Cumulative fraction")
 plt.xlabel("Days from begining")
 plt.plot(x1,y1,label='Logistic',c='r')
