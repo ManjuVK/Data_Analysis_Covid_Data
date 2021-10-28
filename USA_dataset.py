@@ -133,3 +133,104 @@ plt.plot(x1,y1,label='Logistic',c='r')
 plt.plot(x1,y2,label='Observed',c='g')
 plt.legend()
 plt.show()
+
+#********************************************** USA SECOND WAVE ************************************************
+x = 0.023487
+second_wave_data = (normalised_USA_dataset[232:]-0.023487)
+print(second_wave_data)
+USA_second_wave = np.log(second_wave_data)
+USA_second_wave = USA_second_wave.dropna()
+y1 = USA_second_wave
+x1 = np.arange(1, 342)
+plt.xticks(np.arange(1,342,50))
+plt.ylabel("Number of Days")
+plt.xlabel("Cumulative cases")
+plt.title("Second wave of UK")
+plt.plot(x1, y1,label="UK Second Wave", c="y")
+x1, y1 = [0.9, 50.3], [-8.80, -3.95]
+plt.plot(x1, y1, '--g')
+x1, y1 = [50.3, 340.9], [-3.95, -2.28]
+plt.plot(x1, y1, '--r')
+plt.grid()
+plt.show()
+#finding slope and intercept
+x1 = np.arange(1,51)
+USA_firstsegment2 = USA_second_wave[1:51]
+y1 = USA_firstsegment2
+USA_slope_intercept1 = np.polyfit(x1, y1, 1)
+print("UK Second wave- slope & intercept")
+print(USA_slope_intercept1)
+slope = 0.0684613
+intercept = -6.99039617
+USA_exp_model1 = np.exp(intercept + slope * x1)
+y1 = USA_exp_model1
+y2 = second_wave_data[1:51]
+y3 = y2 - y1
+plt.title("Exponential growth of USA for first segment in Wave 2 ")
+plt.xlabel("Days")
+plt.ylabel("Number of cases")
+plt.plot(x1, y1 ,label="Predicted wave",c="r")
+plt.plot(x1, y2 ,label="Observed wave",c="b")
+plt.plot(x1, y3, label = "Error", c="c")
+plt.grid()
+plt.legend()
+plt.show()
+#prediction for 2nd USA wave
+x1 = np.arange(1,342)
+x2 = np.arange(1,51)
+y1 = second_wave_data[:-2]
+USA_exp_model_secondwave = np.exp(intercept + slope * x1)
+y1 = USA_exp_model1
+y2 = second_wave_data[:-2]
+y3 = y2[1:51] - y1
+plt.title("Exponential growth of USA for Second Wave ")
+plt.xlabel("Days")
+plt.ylabel("Number of cases")
+sns.lineplot(x2,y1)
+sns.lineplot(x1, y2)
+sns.lineplot(x2, y3)
+plt.legend(labels=["Predicted","Observed", "Error"])
+plt.grid()
+plt.show()
+#finding k_value
+x1 = second_wave_data[:-2]
+k_value = x1 * (1 + USA_exp_model_secondwave)/USA_exp_model_secondwave
+print("K VALUE")
+print(k_value)
+x1 = np.arange(1,342)
+y1 = k_value
+plt.title("K value for Wave 2- United States of America")
+plt.xlabel("Days")
+plt.ylabel("Carrying Capacity")
+plt.plot(x1, y1)
+plt.show()
+used_k_value = 0.065
+norm_data_USASecondwave = second_wave_data[:-2]
+est_log_model = np.log(abs(norm_data_USASecondwave/((used_k_value)-(norm_data_USASecondwave))))
+print(est_log_model)
+# find slope of logistic
+y1 = est_log_model
+x2 = np.arange(1,342)
+est_log_slope = np.polyfit(x2, y1, 1)
+print("                Slope Intercept")
+print(est_log_slope)
+slope = 0.01062648
+intercept = -0.60874079
+exponential_log = np.exp(intercept + slope * x2)
+Logistic_model = used_k_value * exponential_log/(1+exponential_log)
+print("Logistic")
+print(Logistic_model)
+error = norm_data_USASecondwave - Logistic_model
+SSE_logistic_UKWave2 = sum(error)
+print("Error")
+print(SSE_logistic_UKWave2)
+x1 = np.arange(1,342)
+y1 = Logistic_model
+y2 = norm_data_USASecondwave
+plt.title("Logistic Model Prediction for Wave 2-UK")
+plt.ylabel("Cumulative fraction")
+plt.xlabel("Days from begining")
+plt.plot(x1,y1,label='Logistic',c='r')
+plt.plot(x1,y2,label='Observed',c='g')
+plt.legend()
+plt.show()

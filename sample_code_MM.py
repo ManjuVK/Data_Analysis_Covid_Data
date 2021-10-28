@@ -200,7 +200,6 @@ y1 = normalised_United_Kingdom_dataset[201:]
 #x = normalised_United_Kingdom_dataset[200:201]
 second_wave_data = (normalised_United_Kingdom_dataset[201:]-0.006021)
 print(second_wave_data)
-
 UK_second_wave = np.log(second_wave_data)
 UK_second_wave = UK_second_wave.dropna()
 print(UK_second_wave)
@@ -298,4 +297,4 @@ plt.plot(x1,y2,label='Observed',c='g')
 plt.legend()
 plt.show()
 
-#********************************************************* USA****************************************
+
