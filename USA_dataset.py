@@ -137,6 +137,17 @@ slope = 0.04559845
 intercept = - 6.55652335
 exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
+# plot log graphs of ln(p)/ wave1
+x1 = np.arange(1,232)
+y1 = est_log_model
+y2 = est_log_slope[1]+est_log_slope[0]*x1
+plt.xlabel("Days")
+plt.ylabel("Ln(P)/(K-P)")
+plt.plot(x1, y1,label="Observed", c="g")
+plt.plot(x1,y2,label="Predicted",c="r")
+plt.legend()
+plt.grid()
+plt.show()
 print("Logistic")
 print(Logistic_model)
 error = norm_data_USAFirstwave - Logistic_model
@@ -174,7 +185,6 @@ error = norm_data_USAFirstwave - Logistic_model
 SSE_Logistic_USAWave1 = sum(error**2)
 print("Error of first wave(with initial value of k")
 print(SSE_Logistic_USAWave1)
-x1 = np.arange(1,232)
 y1 = Logistic_model
 y2 =norm_data_USAFirstwave
 plt.title("Logistic Model Prediction for Wave 1-USA")
@@ -291,6 +301,17 @@ error = norm_data_USASecondwave - Logistic_model
 SSE_logistic_USAWave2 = sum(error**2)
 print("Error of Logistic_Wave 2")
 print(SSE_logistic_USAWave2)
+# plot log graphs of ln(p)/ wave1
+x1 = np.arange(1,342)
+y1 = est_log_model
+y2 = est_log_slope[1]+est_log_slope[0]*x1
+plt.xlabel("Days")
+plt.ylabel("Ln(P)/(K-P)")
+plt.plot(x1, y1,label="Observed", c="g")
+plt.plot(x1,y2,label="Predicted",c="r")
+plt.legend()
+plt.grid()
+plt.show()
 x1 = np.arange(1,342)
 y1 = Logistic_model
 y2 = norm_data_USASecondwave

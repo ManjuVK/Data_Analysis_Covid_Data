@@ -98,6 +98,20 @@ x1, y1 = [340.5, 550.4], [-2.81, -2.32]
 plt.plot(x1, y1, '--g')
 plt.grid()
 plt.show()
+# normalised graph of wave 1
+#normalised_firstwave = normalised_United_Kingdom_dataset[1:201]
+#normalised_secondwave = normalised_United_Kingdom_dataset[201:]
+#y1 = normalised_firstwave
+#x1 = np.arange(1,201)
+#plt.xticks(np.arange(1,201,50))
+#plt.xlim(xmin=0)
+#plt.xticks(rotation=0)
+#plt.xlabel("Days from Cumulative cases = 100")
+#plt.ylabel("Cumulative Covid cases")
+#plt.title("Normalised graph of United Kingdom_Wave 1")
+#plt.plot(x1,y1,label='The Untited Kingdom', c='y')
+#plt.grid()
+#plt.show()
 # ***************************************************** UK first wave ***************************************
 x1 = np.arange(1,201)
 y1 = UK_first_wave
@@ -254,6 +268,16 @@ x1, y1 = [69.6, 363.4], [-3.97, -2.26]
 plt.plot(x1, y1, '--r')
 plt.grid()
 plt.show()
+#normalised graph of wave 2
+#x1 = np.arange(1,364)
+#y1 = normalised_secondwave[:-2]
+#plt.xticks(np.arange(1,364,50))
+#plt.xlabel("Number of Days")
+#plt.ylabel("Cumulative cases")
+#plt.title("Normalised graph of United Kingdom_Wave2")
+#plt.plot(x1, y1,label="UK Second Wave", c="y")
+#plt.grid()
+#plt.show()
 #finding slope and intercept
 x1 = np.arange(1,70)
 UK_firstsegment2 = UK_second_wave[1:70]
