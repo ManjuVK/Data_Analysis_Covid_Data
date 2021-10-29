@@ -247,7 +247,7 @@ plt.plot(x1, y3, label = "Error", c="c")
 plt.grid()
 plt.legend()
 plt.show()
-#prediction for 2nd USA wave
+# prediction for 2nd USA wave
 x1 = np.arange(1,342)
 x2 = np.arange(1,70)
 y1 = second_wave_data[:-2]
