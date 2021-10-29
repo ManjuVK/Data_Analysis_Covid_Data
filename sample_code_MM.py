@@ -174,7 +174,7 @@ plt.show()
 used_k_value = 0.00477107
 norm_data_UKFirstwave = normalised_United_Kingdom_dataset[1:201]
 est_log_model = np.log(abs(norm_data_UKFirstwave/((used_k_value)-(norm_data_UKFirstwave))))
-print(est_log_model)
+#print(est_log_model)
 # find slope of logistic
 y1 = est_log_model
 x2 = np.arange(1,201)
