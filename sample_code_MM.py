@@ -112,12 +112,12 @@ x1, y1 = [37, 199], [-6.67, -5.11]
 plt.plot(x1, y1, '--r')
 plt.grid()
 plt.show()
-#finding slope and intercept
+#                           finding slope and intercept(Exponential)
 x1 = np.arange(1,38)
 UK_firstsegment = UK_first_wave[1:38]
 y1 = UK_firstsegment
 UK_slope_intercept1 = np.polyfit(x1, y1, 1)
-print("UK First wave- slope & intercept")
+print("UK First wave(Exponential)- slope & intercept")
 print(UK_slope_intercept1)
 slope = 0.15483199
 intercept = -11.70299942
@@ -150,9 +150,12 @@ sns.lineplot(x1, y2)
 sns.lineplot(x2, y3)
 plt.legend(labels=["Predicted","Observed", "Error"])
 plt.grid()
+error = sum((normalised_United_Kingdom_dataset[1:201]-UK_exp_model_firstwave)**2)
+print("Error of Exponential-wave 1")
+print(error)
 #plt.legend()
 plt.show()
-#finding k_value
+#                           finding k_value(logistic)
 x1 = normalised_United_Kingdom_dataset[1:201]
 k_value = x1 * (1 + UK_exp_model_firstwave)/UK_exp_model_firstwave
 print("K VALUE of UK_first wave")
@@ -176,17 +179,48 @@ print(est_log_model)
 y1 = est_log_model
 x2 = np.arange(1,201)
 est_log_slope  = np.polyfit(x2, y1, 1)
-print("Slope Intercept")
+print("Slope Intercept of Logistic(wave 1)")
 print(est_log_slope)
 slope = 0.03458301
 intercept = -3.29141529
 exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
-print("Logistic")
-print(Logistic_model)
+#print("Logistic")
+#print(Logistic_model)
 error = norm_data_UKFirstwave - Logistic_model
-SSE_Logistic_UKWave1 = sum(error)
-print("Error")
+SSE_Logistic_UKWave1 = sum(error**2)
+print("Error of Logistic model(wave 1)")
+print(SSE_Logistic_UKWave1)
+x1 = np.arange(1,201)
+y1 = Logistic_model
+y2 =norm_data_UKFirstwave
+plt.title("Logistic Model Prediction for Wave 1-UK")
+plt.ylabel("Cumulative fraction")
+plt.xlabel("Days from begining")
+plt.plot(x1,y1,label='Logistic',c='r')
+plt.plot(x1,y2,label='Observed',c='g')
+plt.legend()
+plt.show()
+#                           initial value of k
+used_k_value = 0.41199605
+norm_data_UKFirstwave = normalised_United_Kingdom_dataset[1:201]
+est_log_model = np.log(abs(norm_data_UKFirstwave/((used_k_value)-(norm_data_UKFirstwave))))
+print(est_log_model)
+# find slope of logistic
+y1 = est_log_model
+x2 = np.arange(1,201)
+est_log_slope  = np.polyfit(x2, y1, 1)
+print("Slope Intercept of Logistic(wave 1)with initial value f k")
+print(est_log_slope)
+slope = 0.03458301
+intercept = -3.29141529
+exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
+Logistic_model = used_k_value * exponential_log/(1+exponential_log)
+#print("Logistic")
+#print(Logistic_model)
+error = norm_data_UKFirstwave - Logistic_model
+SSE_Logistic_UKWave1 = sum(error**2)
+print("Error of Logistic model(wave 1)with initial value of k")
 print(SSE_Logistic_UKWave1)
 x1 = np.arange(1,201)
 y1 = Logistic_model
@@ -225,7 +259,7 @@ x1 = np.arange(1,70)
 UK_firstsegment2 = UK_second_wave[1:70]
 y1 = UK_firstsegment2
 UK_slope_intercept1 = np.polyfit(x1, y1, 1)
-print("UK Second wave- slope & intercept")
+print("UK Second wave- slope & intercept(Exponential)")
 print(UK_slope_intercept1)
 slope = 0.05313022
 intercept = -7.05400091
@@ -242,6 +276,7 @@ plt.plot(x1, y3, label = "Error", c="c")
 plt.grid()
 plt.legend()
 plt.show()
+
 #prediction for 2nd UK wave
 x1 = np.arange(1,364)
 x2 = np.arange(1,90)
@@ -259,11 +294,15 @@ sns.lineplot(x2, y3)
 plt.legend(labels=["Predicted","Observed", "Error"])
 plt.grid()
 plt.show()
+error = sum((second_wave_data[:-2]-UK_exp_model_secondwave)**2)
+print("Error of Exponential-wave 2")
+print(error)
 #finding k_value
 x1 = second_wave_data[:-2]
 k_value = x1 * (1 + UK_exp_model_secondwave)/UK_exp_model_secondwave
-print("K VALUE")
-print(k_value)
+f = k_value.to_numpy()
+print("K VALUE of second wave")
+print(f)
 x1 = np.arange(1,364)
 y1 = k_value
 plt.title("K value for Wave 2- The United Kingdom")
@@ -271,7 +310,7 @@ plt.xlabel("Days")
 plt.ylabel("Carrying Capacity")
 plt.plot(x1, y1)
 plt.show()
-used_k_value =0.07
+used_k_value = 0.103424
 norm_data_UKSecondwave = second_wave_data[:-2]
 est_log_model = np.log(abs(norm_data_UKSecondwave/((used_k_value)-(norm_data_UKSecondwave))))
 print(est_log_model)
@@ -279,7 +318,7 @@ print(est_log_model)
 y1 = est_log_model
 x2 = np.arange(1,364)
 est_log_slope = np.polyfit(x2, y1, 1)
-print("                Slope Intercept")
+print(" Slope Intercept of Logistic model (wave 2)")
 print(est_log_slope)
 slope = 0.01444578# .01390938 #0.03458301
 intercept = -1.745269330#-1.67991815#-3.29141529
@@ -288,7 +327,7 @@ Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
 error = norm_data_UKSecondwave - Logistic_model
-SSE_logistic_UKWave2 = sum(error)
+SSE_logistic_UKWave2 = sum(error**2)
 print("Error")
 print(SSE_logistic_UKWave2)
 x1 = np.arange(1,364)
@@ -301,5 +340,35 @@ plt.plot(x1,y1,label='Logistic',c='r')
 plt.plot(x1,y2,label='Observed',c='g')
 plt.legend()
 plt.show()
-
+#                       wave2 with initial value of k
+used_k_value = 0.09090431
+norm_data_UKSecondwave = second_wave_data[:-2]
+est_log_model = np.log(abs(norm_data_UKSecondwave/((used_k_value)-(norm_data_UKSecondwave))))
+print(est_log_model)
+# find slope of logistic
+y1 = est_log_model
+x2 = np.arange(1,364)
+est_log_slope = np.polyfit(x2, y1, 1)
+print(" Slope Intercept of Logistic model with initial value of k(wave 2)")
+print(est_log_slope)
+slope = 0.01444578# .01390938 #0.03458301
+intercept = -1.745269330#-1.67991815#-3.29141529
+exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
+Logistic_model = used_k_value * exponential_log/(1+exponential_log)
+#print("Logistic")
+#print(Logistic_model)
+error = norm_data_UKSecondwave - Logistic_model
+SSE_logistic_UKWave2 = sum(error**2)
+print("Error with initial value of k)")
+print(SSE_logistic_UKWave2)
+x1 = np.arange(1,364)
+y1 = Logistic_model
+y2 = norm_data_UKSecondwave
+plt.title("Logistic Model Prediction for Wave 2-UK")
+plt.ylabel("Cumulative fraction")
+plt.xlabel("Days from begining")
+plt.plot(x1,y1,label='Logistic',c='r')
+plt.plot(x1,y2,label='Observed',c='g')
+plt.legend()
+plt.show()
 
