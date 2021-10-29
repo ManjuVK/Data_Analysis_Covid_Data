@@ -36,6 +36,20 @@ x1, y1 = [349.9, 550.4], [-2.47, -2.17]
 plt.plot(x1, y1, '--r')
 plt.grid()
 plt.show()
+#normalised data of first wave
+#x1 = np.arange(1,232)
+#y1 = normalised_USA_dataset[1:232]
+#USA_first_wave = y1[1:232]
+#USA_second_wave = y1[233:576]
+#plt.xticks(np.arange(1,233,50))
+#plt.xlim(xmin=0)
+#plt.xticks(rotation=0)
+#plt.xlabel("Days from Cumulative cases = 100")
+#plt.ylabel("Cumulative Covid cases ")
+#plt.title("Normalised graph for United States of America_Wave 1")
+#plt.plot(x1,y1,label='United States of America', c='y')
+#plt.grid()
+#plt.show()
 #********************************************** USA First WAVE *****************************************************
 y1 = USA_first_wave
 x1 = np.arange(1, 232)
@@ -180,8 +194,8 @@ USA_second_wave = USA_second_wave.dropna()
 y1 = USA_second_wave
 x1 = np.arange(1, 342)
 plt.xticks(np.arange(1,342,50))
-plt.ylabel("Number of Days")
-plt.xlabel("Cumulative cases")
+plt.xlabel("Number of Days")
+plt.ylabel("Cumulative cases")
 plt.title("Second wave of USA")
 plt.plot(x1, y1,label="USA Second Wave", c="y")
 x1, y1 = [0.9, 50.3], [-8.80, -3.95]
@@ -190,6 +204,16 @@ x1, y1 = [50.3, 340.9], [-3.95, -2.28]
 plt.plot(x1, y1, '--r')
 plt.grid()
 plt.show()
+# normalised graph of USA WAVE2
+#y1 = normalised_USA_dataset[232:-2]
+#x1 = np.arange(1, 342)
+#plt.xticks(np.arange(1,342,50))
+#plt.xlabel("Number of Days")
+#plt.ylabel("Cumulative cases")
+#plt.title("Normalised graph of USA_Wave 2")
+#plt.plot(x1, y1,label="USA Second Wave", c="y")
+#plt.grid()
+#plt.show()
 #finding slope and intercept
 x1 = np.arange(1,51)
 USA_firstsegment2 = USA_second_wave[1:51]
