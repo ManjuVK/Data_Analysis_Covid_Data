@@ -205,6 +205,18 @@ error = norm_data_UKFirstwave - Logistic_model
 SSE_Logistic_UKWave1 = sum(error**2)
 print("Error of Logistic model(wave 1)")
 print(SSE_Logistic_UKWave1)
+#ln(P/K-P) UKWAVE1
+x1 = np.arange(1,201)
+y1 = est_log_model
+y2 = est_log_slope[1]+est_log_slope[0]*x1
+plt.xlabel("Days")
+plt.ylabel("Ln(P)/(K-P)")
+plt.plot(x1, y1,label="Observed", c="g")
+plt.plot(x1,y2,label="Predicted",c="r")
+plt.legend()
+plt.grid()
+plt.show()
+
 x1 = np.arange(1,201)
 y1 = Logistic_model
 y2 =norm_data_UKFirstwave
@@ -354,6 +366,17 @@ error = norm_data_UKSecondwave - Logistic_model
 SSE_logistic_UKWave2 = sum(error**2)
 print("Error")
 print(SSE_logistic_UKWave2)
+# plot log graphs of ln(p)/ wave1
+x1 = np.arange(1,364)
+y1 = est_log_model
+y2 = est_log_slope[1]+est_log_slope[0]*x1
+plt.xlabel("Days")
+plt.ylabel("Ln(P)/(K-P)")
+plt.plot(x1, y1,label="Observed", c="g")
+plt.plot(x1,y2,label="Predicted",c="r")
+plt.legend()
+plt.grid()
+plt.show()
 x1 = np.arange(1,364)
 y1 = Logistic_model
 y2 = norm_data_UKSecondwave
