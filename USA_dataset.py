@@ -57,7 +57,7 @@ x1 = np.arange(1, 57)
 USA_firstsegment = USA_first_wave[1:57]
 y1 = USA_firstsegment
 USA_slope_intercept1 = np.polyfit(x1, y1, 1)
-print("USA First wave- slope & intercept")
+print("USA First wave- slope & intercept Exponential")
 print(USA_slope_intercept1)
 slope = 0.18198125
 intercept = -14.68616447
@@ -91,6 +91,9 @@ sns.lineplot(x2, y3)
 plt.legend(labels=["Predicted","Observed", "Error"])
 plt.grid()
 plt.show()
+exp_error = sum((normalised_USA_dataset[1:230]-USA_exp_model_firstwave[1:230])**2)
+print("Error of Exponential growth")
+print(exp_error)
 # finding k value
 x1 = normalised_USA_dataset[1:232]
 k_value = x1 * (1 + USA_exp_model_firstwave)/USA_exp_model_firstwave
@@ -114,7 +117,7 @@ print(est_log_model)
 y1 = est_log_model
 x2 = np.arange(1,232)
 est_log_slope  = np.polyfit(x2, y1, 1)
-print("Slope Intercept")
+print("Slope Intercept of first wave(Logistic)")
 print(est_log_slope)
 slope = 0.04559845
 intercept = - 6.55652335
@@ -123,8 +126,8 @@ Logistic_model = used_k_value * exponential_log/(1+exponential_log)
 print("Logistic")
 print(Logistic_model)
 error = norm_data_USAFirstwave - Logistic_model
-SSE_Logistic_USAWave1 = sum(error)
-print("Error")
+SSE_Logistic_USAWave1 = sum(error**2)
+print("Error of first wave")
 print(SSE_Logistic_USAWave1)
 x1 = np.arange(1,232)
 y1 = Logistic_model
@@ -161,7 +164,7 @@ x1 = np.arange(1,51)
 USA_firstsegment2 = USA_second_wave[1:51]
 y1 = USA_firstsegment2
 USA_slope_intercept1 = np.polyfit(x1, y1, 1)
-print("USA Second wave- slope & intercept")
+print("USA Second wave- slope & intercept(Exponential)")
 print(USA_slope_intercept1)
 slope = 0.0684613
 intercept = -6.99039617
@@ -195,6 +198,9 @@ sns.lineplot(x2, y3)
 plt.legend(labels=["Predicted","Observed", "Error"])
 plt.grid()
 plt.show()
+error = sum((second_wave_data[:-2]-USA_exp_model_secondwave)**2)
+print("Error of Exponential wave 2")
+print(error)
 #finding k_value
 x1 = second_wave_data[:-2]
 k_value = x1 * (1 + USA_exp_model_secondwave)/USA_exp_model_secondwave
@@ -218,17 +224,17 @@ print(est_log_model)
 y1 = est_log_model
 x2 = np.arange(1,342)
 est_log_slope = np.polyfit(x2, y1, 1)
-print("                Slope Intercept")
+print("         Slope Intercept(Logistic wave 2")
 print(est_log_slope)
 slope = 0.01062648
 intercept = -0.60874079
 exponential_log = np.exp(est_log_slope[1] + est_log_slope[0] * x2)
 Logistic_model = used_k_value * exponential_log/(1+exponential_log)
-print("Logistic")
-print(Logistic_model)
+#print("Logistic")
+#print(Logistic_model)
 error = norm_data_USASecondwave - Logistic_model
-SSE_logistic_USAWave2 = sum(error)
-print("Error")
+SSE_logistic_USAWave2 = sum(error**2)
+print("Error of Logistic_Wave 2")
 print(SSE_logistic_USAWave2)
 x1 = np.arange(1,342)
 y1 = Logistic_model
