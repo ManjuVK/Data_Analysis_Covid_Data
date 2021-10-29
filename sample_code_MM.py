@@ -32,9 +32,8 @@ plt.tight_layout()
 plt.grid()
 plt.show()
 
-#******************************************* TASK 4 ***************************************************************
+#***************************************** TASK 4 ***************************************************************
 # Normalise data
-
 normalised_United_Kingdom_dataset =  The_Untited_Kingdom[61:]/67886011
 normalised_Italy_dataset = Italy[52:]/60461826
 normalised_USA_dataset = United_States_of_America[52:]/331002651
